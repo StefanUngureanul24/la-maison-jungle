@@ -1,0 +1,29 @@
+.lmj-banner {
+    /*color: red;*/
+    
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    
+    
+    padding: 1em; 
+    border-bottom: solid 0.5em black;
+    
+    text-align: right;
+}
+
+.lmj-title {
+    padding-left: 1em;
+}
+
+.lmj-logo {
+    height: 1em;
+    width: 1em;
+}
+
+.lmj-cart {
+    padding: 1em;
+    color: #fff;
+    background-color: #31b572;
+}
