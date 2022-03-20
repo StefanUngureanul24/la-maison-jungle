@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Cart() {
+function Cart({ cart, updateCart }) {
     /*
     const monsteraPrice = 8;
     const ivyPrice = 10;
@@ -22,26 +22,31 @@ function Cart() {
     */
 
     const monsteraPrice = 8
-    const [cart, updateCart] = useState(0)
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(true)
 
     return isOpen ? (
         <div className='lmj-cart'>
-            <button onClick={() => setIsOpen(false)}>Close Shopping Cart</button>
-            <h2>Panier</h2>
-            <div>
-                Monstera: {monsteraPrice}€
-                <button onclick={() => updateCart(cart + 1)}>
-                    Add
-                </button>
-            </div>
+            <button 
+                onClick={() => setIsOpen(false)}
+            >
+                Close Shopping Cart
+            </button>
+            <h2>Shopping Cart</h2>
             <h3>Total : {monsteraPrice * cart}€</h3>
-            <button onClick={() => updateCart(0)}>
+            <button 
+                onClick={() => updateCart(0)}
+            >
                 Empty shopping cart
             </button>
         </div>
     ) : (
-        <button onClick={() => setIsOpen(true)}>Open Shopping Cart</button>
+        <div className='lmj-cart-closed'>
+            <button 
+                onClick={() => setIsOpen(true)}
+            >
+                Open Shopping Cart
+            </button>
+        </div>
     )
 }
 

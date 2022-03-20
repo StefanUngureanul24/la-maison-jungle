@@ -23,7 +23,7 @@ import { plantList } from '../datas/plantList'
     Each variable of each element of the list
     Is sent as props to PlantItem
 */
-function ShoppingList() {
+function ShoppingList({ cart, updateCart }) {
     var id_categ = 0
     const categories = plantList.reduce(
         (acc, plant) => 
@@ -55,13 +55,21 @@ function ShoppingList() {
             </ul>
             <ul className='lmj-plant-list'>
                 {plantList.map(({ id, cover, name, water, light }) => (
-                    <PlantItem
-                        id={id}
-                        cover={cover}
-                        name={name}
-                        water={water}
-                        light={light}
-                    />
+                    <div key={id}>    
+                        <PlantItem
+                            id={id}
+                            cover={cover}
+                            name={name}
+                            water={water}
+                            light={light}
+                        />
+                        <button 
+                            className='buttonItem'
+                            onClick={() => updateCart(cart + 1)}
+                        >
+                            Add
+                        </button>
+                    </div>
                 ))}
             </ul>
         </div>
