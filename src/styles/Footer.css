@@ -1,0 +1,17 @@
+.lmj-footer {
+    padding: 1em;
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+
+    font-weight: 500;
+
+    border-top: solid 0.5em black;
+
+    background-color: #31b572;
+}
+
+.lmj-footer-elem {
+    margin-bottom: 0.5em;
+}
