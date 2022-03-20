@@ -24,12 +24,13 @@ import { plantList } from '../datas/plantList'
     Is sent as props to PlantItem
 */
 function ShoppingList() {
+    var id_categ = 0
     const categories = plantList.reduce(
         (acc, plant) => 
             acc.includes(plant.name) ? acc : acc.concat(plant.category),
             []    
     )
-
+    
     return (
         /* 
             map(element => (action for that element))
@@ -43,10 +44,13 @@ function ShoppingList() {
         </ul>
         */
 
+        /*
+            !!!!To fix later - warning for cateogires key
+        */
         <div>
             <ul>
                 {categories.map((cat) => (
-                    <li key={cat}>{cat}</li>
+                    <li key={cat.toString()}>{cat}</li>
                 ))}
             </ul>
             <ul className='lmj-plant-list'>
