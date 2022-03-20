@@ -49,8 +49,8 @@ function ShoppingList() {
         */
         <div>
             <ul>
-                {categories.map((cat) => (
-                    <li key={cat.toString()}>{cat}</li>
+                {categories.map((cat, index) => (
+                    <li key={`${cat}-${index}`}>{cat}</li>
                 ))}
             </ul>
             <ul className='lmj-plant-list'>
