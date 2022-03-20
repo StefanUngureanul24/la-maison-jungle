@@ -1,6 +1,16 @@
 import Sun from '../assets/sun.svg'
 import Water from '../assets/water.svg'
 
+/* 
+    Value used to define the quantity of light/water
+    required by the plant
+*/
+const quantityLabel = {
+    1: 'small',
+    2: 'moderate',
+    3: 'big'
+}
+
 // au lieu de function CareScale(props)
 /* 
     scaleValue: value of light/water required for the plant
@@ -37,7 +47,13 @@ function CareScale({ scaleValue, careType }) {
     )
 
     return (
-        <div>
+        <div
+            onClick={() =>
+                alert(`This plant requires a ${quantityLabel[scaleValue]} quantity ${careType === 'light' ? 'of light' : 'of water'}`
+                )
+            }
+        >
+
             {range.map((rangeElem) => 
             scaleValue >= rangeElem ? (
                 <span key={rangeElem.toString()}>{scaleType}</span>
