@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function Cart({ cart, updateCart }) {
     /*
@@ -21,8 +21,16 @@ function Cart({ cart, updateCart }) {
     )
     */
 
-    const monsteraPrice = 8
+    //const monsteraPrice = 8
     const [isOpen, setIsOpen] = useState(true)
+    const total = cart.reduce(
+        (acc, plantType) => acc + plantType.amount * plantType.price,
+        0
+    )
+    
+    useEffect(() => {
+        document.title = `${total} purchases made`
+    }, [total])
 
     return isOpen ? (
         <div className='lmj-cart'>
@@ -31,23 +39,40 @@ function Cart({ cart, updateCart }) {
             >
                 Close Shopping Cart
             </button>
-            <h2>Shopping Cart</h2>
-            <h3>Total : {monsteraPrice * cart}€</h3>
-            <button 
-                onClick={() => updateCart(0)}
-            >
-                Empty shopping cart
-            </button>
-        </div>
+            {cart.length > 0 ? (
+                <div>
+                    <h2>Cart</h2>
+                    <ul>
+                        {cart.map(({ name, price, amount }, index) => (
+                            <div key={`${name}-${index}`}>
+                                {name} {price}€ x {amount}
+                            </div>
+                        ))}
+                    </ul>
+                    <h3>
+                        Total: {total}€
+                    </h3>
+                    <button onClick={() => updateCart([])}>
+                        Empty the cart
+                    </button>
+                </div>
+            ) : (
+                <div>
+                    Your cart is empty
+                </div>
+            )}
+        </div>    
     ) : (
         <div className='lmj-cart-closed'>
-            <button 
+            <button
+                className='lmj-cart-toggle-button'
                 onClick={() => setIsOpen(true)}
             >
-                Open Shopping Cart
+                Open the cart
             </button>
         </div>
     )
+    
 }
 
 export default Cart
