@@ -27,7 +27,6 @@ import { plantList } from '../datas/plantList'
     Is sent as props to PlantItem
 */
 function ShoppingList({ cart, updateCart }) {
-    //var id_categ = 0
     const [activeCategory, setActiveCategory] = useState('')
     const categories = plantList.reduce(
         (acc, plant) => 
@@ -35,6 +34,9 @@ function ShoppingList({ cart, updateCart }) {
             []    
     )
     
+    /* 
+        Problem with Add button: adds NAN to total, not number
+    */
     function addToCart(name, price) {
         const currentPlantSaved = cart.find((plant) => plant.name === name)
         if (currentPlantSaved) {
@@ -48,7 +50,6 @@ function ShoppingList({ cart, updateCart }) {
         } else {
             updateCart([...cart, { name, price, amount: 1 }])
         }
-        
     }
 
     return (
